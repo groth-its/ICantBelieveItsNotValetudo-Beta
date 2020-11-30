@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bashio
+set -e
+
+bashio::log.info 'Start ICantBelieveItsNotValetudo - kubiq Renderer'
+cd /app
+npm start

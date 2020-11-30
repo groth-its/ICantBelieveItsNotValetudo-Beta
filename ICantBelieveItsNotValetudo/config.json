@@ -1,0 +1,91 @@
+{
+  "name": "ICantBelieveItsNotValetudo - beta",
+  "version": "beta",
+  "slug": "icantbelieveitsnotvaletudo",
+  "description": "This is a simple companion service for valetudo which generates the map pngs.",
+  "url": "https://github.com/Poeschl/ICantBelieveItsNotValetudo-Beta/tree/master/ICantBelieveItsNotValetudo",
+  "webui": "http://[HOST]:[PORT:3000]/api/map/image",
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ],
+  "startup": "application",
+  "boot": "auto",
+  "ports": {
+    "3000/tcp": null
+  },
+  "ports_description": {
+    "3000/tcp": "Port serving the floor plan (Not required for Supervisor Ingress)"
+  },
+  "ingress": true,
+  "ingress_port": 3000,
+  "ingress_entry": "api/map/image",
+  "panel_title": "Valetudo Floorplan",
+  "panel_icon": "mdi:floor-plan",
+  "map": ["ssl", "share"],
+  "schema": {
+    "mapSettings": {
+      "drawPath": "bool",
+      "drawCharger": "bool",
+      "drawRobot": "bool",
+      "scale": "int(0,)",
+      "rotate": "int(0,)",
+      "crop_x1": "int?",
+      "crop_x2": "int?",
+      "crop_y1": "int?",
+      "crop_y2": "int?",
+      "underlay_path": "match(^/share/.+)?",
+      "underlay_scale": "int(1,)?",
+      "underlay_x": "int(0,)?",
+      "underlay_y": "int(0,)?",
+      "overlay_path": "match(^/share/.+)?",
+      "overlay_scale": "int(1,)?",
+      "overlay_x": "int(0,)?",
+      "overlay_y": "int(0,)?"
+    },
+    "mapColors": {
+      "floor": "match(#(?:[0-9a-fA-F]{2}){2,4}$|(#[0-9a-fA-F]{3})$)",
+      "obstacle_weak": "match(#(?:[0-9a-fA-F]{2}){2,4}$|(#[0-9a-fA-F]{3})$)",
+      "obstacle_strong": "match(#(?:[0-9a-fA-F]{2}){2,4}$|(#[0-9a-fA-F]{3})$)",
+      "path": "match(#(?:[0-9a-fA-F]{2}){2,4}$|(#[0-9a-fA-F]{3})$)"
+    },
+    "mqtt" : {
+      "identifier": "str",
+      "topicPrefix": "str",
+      "autoconfPrefix": "str",
+      "broker_url": "match(^mqtts?://.+:.+@.+$)",
+      "caPath": "str",
+      "mapDataTopic": "str",
+      "minMillisecondsBetweenMapUpdates": "int",
+      "publishMapImage": "bool"
+    }
+  },
+  "options": {
+    "mapSettings": {
+      "drawPath": true,
+      "drawCharger": true,
+      "drawRobot": true,
+      "scale": 4,
+      "rotate": 0
+    },
+    "mapColors": {
+        "floor": "#0076ff",
+        "obstacle_weak": "#6699ff",
+        "obstacle_strong": "#52aeff",
+        "path": "#ffffff"
+    },
+    "mqtt" : {
+      "identifier": "rockrobo",
+      "topicPrefix": "valetudo",
+      "autoconfPrefix": "homeassistant",
+      "broker_url": "mqtt://user:pass@foobar.example",
+      "caPath": "",
+      "mapDataTopic": "valetudo/rockrobo/map_data",
+      "minMillisecondsBetweenMapUpdates": 10000,
+      "publishMapImage": true
+    }
+  }
+}
