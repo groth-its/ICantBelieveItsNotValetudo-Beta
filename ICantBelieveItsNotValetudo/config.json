@@ -1,7 +1,7 @@
 {
-  "name": "ICantBelieveItsNotValetudo - beta",
+  "name": "ICantBelieveItsNotValetudo - beta-1",
   "version": "beta-1",
-  "slug": "icantbelieveitsnotvaletudo",
+  "slug": "icantbelieveitsnotvaletudo-beta",
   "description": "This is a simple companion service for valetudo which generates the map pngs.",
   "url": "https://github.com/groth-its/ICantBelieveItsNotValetudo-Beta/tree/master/ICantBelieveItsNotValetudo",
   "webui": "http://[HOST]:[PORT:3000]/api/map/image",
